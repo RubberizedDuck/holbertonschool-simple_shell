@@ -8,7 +8,7 @@
  * Return: Always 0 (success)
  */
 
-int main(int ac, char *av[])
+int main(void)
 {
 	/* define buffer and buffer size */
 	char *line;
