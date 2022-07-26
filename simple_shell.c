@@ -8,22 +8,30 @@
  * Return: Always 0 (success)
  */
 
-int main(__attribute__ ((unused)) int ac, char *av[])
+int main(int ac, char *av[])
 {
-	int i;
+	/* define buffer and buffer size */
+	char *line;
+	size_t len;
 
-	i = 0;
-	while (av[i] != NULL)
+	line = NULL;
+	len = 32;
+
+	/* 1 allows to loop forever */
+	while (1)
 	{
 		printf("$ ");
-		if (scanf("%s", av[i]) != EOF)
+		if (getline(&line, &len, stdin) == -1)
 		{
-			printf("%s\n", av[i]);
+			printf("getline error");
 		}
-		else
+		if (feof(stdin))
 		{
+			printf("\n");
 			exit(0);
 		}
+		printf("%s", line);
 	}
+	free(line);
 	return (0);
 }
