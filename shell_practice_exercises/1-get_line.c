@@ -3,12 +3,30 @@
 #include <stdlib.h>
 
 /**
+ * _strlen - returns the length of a string
+ * @s: the string in question
+ * Return: always 0 (success)
+ */
+
+int _strlen(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i = i + 1;
+	}
+	return (i);
+}
+
+/**
  * main - prints the command line arguments passed through
  * the main function
  * Return: Always 0 (success)
  */
 
-int main(int ac, char *av[])
+int main(void)
 {
 	/* define buffer and buffer size */
 	char *line;

@@ -14,7 +14,7 @@ char **tokens(char *string);
 
 	/* First token, delimiter set */
 	token = strtok(string, " ");
-	/* Pinting tokens until exhausted */
+	/* Printing tokens until exhausted */
 	while (token != NULL)
 	{
 		printf("%s\n", token);
