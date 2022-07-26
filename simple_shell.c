@@ -49,7 +49,7 @@ int tokens(char *string)
  * Return: Always 0 (success)
  */
 
-int _getline()
+int _getline(void)
 {
 	/* define buffer and buffer size */
 	char *line;
