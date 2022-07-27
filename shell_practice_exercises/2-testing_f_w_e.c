@@ -27,18 +27,17 @@ int main(void)
 		}
 		if (child_pid == 0)
 		{
-			printf("Wait for me, wait for me!\n");
+			printf("Wait for me, wait for me! I've lost my pid!\n");
 			if (execve(av[0], av, NULL) == -1)
 			{
 				perror("Error:");
 			}
-			printf("Dad, my pid is: %u\n", child_pid);
 			sleep(3);
 		}
 		else
 		{
 			wait(&status);
-			printf("Oh, it's all better now! My pid is: %u\n", child_pid);
+			printf("Oh, it's all better now! I've found it: %u\n", child_pid);
 		}
 		i = i + 1;
 	}
