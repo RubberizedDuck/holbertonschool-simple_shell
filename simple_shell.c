@@ -54,6 +54,7 @@ int _getline(void)
 	/* define buffer and buffer size */
 	char *line;
 	size_t len;
+	int g;
 
 	line = NULL;
 	len = 32;
@@ -62,11 +63,12 @@ int _getline(void)
 	while (1)
 	{
 		printf("$ ");
-		if (getline(&line, &len, stdin) == -1)
+		g = getline(&line, &len, stdin);
+		if (g == -1)
 		{
 			printf("getline error");
 		}
-		if (feof(stdin))
+		if (g == EOF)
 		{
 			printf("\n");
 			exit(0);
