@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include "main.h"
+#include "main2.h"
 
 /**
  * *_strdup - returns a pointer to a newly allocated space in memory
