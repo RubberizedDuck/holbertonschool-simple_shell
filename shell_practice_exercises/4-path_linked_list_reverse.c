@@ -67,6 +67,11 @@ list_t *add_node(list_t **head, const char *str)
 	return (new_node);
 }
 
+/**
+ * main - builds a linked list adding nodes at the head
+ * Return: 0 upon success
+ */
+
 int main ()
 {
 	char *str, *token;
