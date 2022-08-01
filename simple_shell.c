@@ -42,7 +42,7 @@ int _getline(void)
 	/* define buffer and buffer size */
 	char *line;
 	size_t len;
-	int g;
+	int g, count;
 
 	line = NULL;
 	len = 32;
@@ -65,7 +65,7 @@ int _getline(void)
 		line[_strlen(line) - 1] = '\0';
 		args = tokens(line);
 		fork_exec(args);
-		int count = 0;
+		count = 0;
 		while (args[count] != NULL)
 		{
 			free(args[count]);
