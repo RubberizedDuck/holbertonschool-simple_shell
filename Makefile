@@ -8,7 +8,8 @@ TARGET=hsh
 SRC=	simple_shell.c \
 	string_funcs.c \
 	linklist_funcs.c \
-	fork_exec.c
+	fork_exec.c \
+	_getenv.c
 
 all:
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
