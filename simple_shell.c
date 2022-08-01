@@ -54,13 +54,12 @@ int _getline(void)
 		g = getline(&line, &len, stdin);
 		if (g == -1)
 		{
-			printf("getline error");
 			exit(EXIT_FAILURE);
 		}
 		if (g == EOF)
 		{
 			printf("\n");
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
 		line[_strlen(line) - 1] = '\0';
 		args = tokens(line);
