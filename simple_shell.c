@@ -1,25 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-
-/**
- * _strlen - returns the length of a string
- * @s: the string in question
- * Return: always 0 (success)
- */
-
-int _strlen(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i = i + 1;
-	}
-	return (i);
-}
+#include "main.h"
 
 /**
  * tokens - separates a string by words (tokens) and stores
@@ -28,19 +7,27 @@ int _strlen(char *s)
  * Return: 0 (success)
  */
 
-int tokens(char *string)
+char **tokens(char *string)
 {
+	char **toks;
 	char *token;
+	int count = 0;
 
+	toks = malloc(sizeof(*toks) * 32);
+	if (toks == NULL)
+	{
+		return (NULL);
+	}
 	/* First token, delimiter set */
 	token = strtok(string, " ");
 	/* Printing tokens until exhausted */
 	while (token != NULL)
 	{
-		printf("%s\n", token);
+		toks[count] = _strdup(token);
 		token = strtok(NULL, " ");
+		count = count + 1;
 	}
-	return (0);
+	return (toks);
 }
 
 /**
@@ -51,6 +38,7 @@ int tokens(char *string)
 
 int _getline(void)
 {
+	char **args;
 	/* define buffer and buffer size */
 	char *line;
 	size_t len;
@@ -67,6 +55,7 @@ int _getline(void)
 		if (g == -1)
 		{
 			printf("getline error");
+			exit(EXIT_FAILURE);
 		}
 		if (g == EOF)
 		{
@@ -74,7 +63,15 @@ int _getline(void)
 			exit(0);
 		}
 		line[_strlen(line) - 1] = '\0';
-		tokens(line);
+		args = tokens(line);
+		fork_exec(args);
+		int count = 0;
+		while (args[count] != NULL)
+		{
+			free(args[count]);
+			count = count + 1;
+		}
+		free(args);
 	}
 	free(line);
 	return (0);

@@ -15,13 +15,14 @@ void fork_exec(char **argv)
 	{
 		if (execve(argv[0], argv, NULL) == -1)
 		{
-			perror(argv[0]);
+			perror("error");
+			exit(EXIT_FAILURE);
 		}
-		exit(EXIT_FAILURE);
 	}
 	else if (child_pid < 0)
 	{
-		perror(argv[0]);
+		perror("error");
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
