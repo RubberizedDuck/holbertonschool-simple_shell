@@ -68,7 +68,7 @@ list_t *add_node_end(list_t **head, const char *str)
 
 /**
  * print_list - prints the number of elements of struct list
- * @h: pointer to first struct list
+ * @head: pointer to first struct list
  * Return: Number of elements created from struct list
  */
 
