@@ -9,7 +9,6 @@
 void fork_exec(char **argv)
 {
 	pid_t child_pid;
-	extern char **environ;
 
 	child_pid = fork();
 	if (child_pid == 0)
