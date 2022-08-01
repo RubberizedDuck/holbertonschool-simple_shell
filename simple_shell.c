@@ -50,7 +50,8 @@ int _getline(void)
 	/* allows to loop forever */
 	while (1)
 	{
-		printf("$ ");
+		if (isatty(STDIN_FILENO))
+			printf("$ ");
 		g = getline(&line, &len, stdin);
 		if (g == -1)
 		{
