@@ -68,28 +68,22 @@ int _getline(void)
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-		{
 			printf("$ ");
-		}
+
 		g = getline(&line, &len, stdin);
 		if (g == -1)
 		{
 			free(line);
 			if (g == EOF)
-			{
 				exit(0);
-			}
 			else
-			{
 				exit(1);
-			}
 		}
 		line[_strlen(line) - 1] = '\0';
 		args = tokens(line);
 		if (args == NULL)
-		{
 			continue;
-		}
+
 		fork_exec(args);
 		count = 0;
 		while (args[count] != NULL)
