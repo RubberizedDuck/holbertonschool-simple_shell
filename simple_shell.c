@@ -55,12 +55,15 @@ int _getline(void)
 		g = getline(&line, &len, stdin);
 		if (g == -1)
 		{
-			exit(EXIT_FAILURE);
+			free(line);
+			if (isatty(STDIN_FILENO))
+				printf("\n");
+			exit(0);
 		}
 		if (g == EOF)
 		{
 			printf("\n");
-			exit(EXIT_SUCCESS);
+			exit(0);
 		}
 		line[_strlen(line) - 1] = '\0';
 		args = tokens(line);
