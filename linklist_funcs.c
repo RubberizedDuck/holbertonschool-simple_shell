@@ -76,15 +76,15 @@ size_t print_list(const list_t *head)
 {
 	size_t numOfElements = 0;
 
-	while (h != NULL)
+	while (head != NULL)
 	{
 		printf("[%d] ", h->len);
-		if (h->str == NULL)
+		if (head->str == NULL)
 			printf("(nil)\n");
 		else
-			printf("%s\n", h->str);
+			printf("%s\n", head->str);
 		numOfElements++;
-		h = h->next;
+		head = head->next;
 	}
 	return (numOfElements);
 }
@@ -118,13 +118,13 @@ size_t list_len(const list_t *head)
 {
 	size_t numOfElements = 0;
 
-	while (h != NULL)
+	while (head != NULL)
 	{
-		if (h->str == NULL)
+		if (head->str == NULL)
 			printf("(nil)\n");
 		else
 		numOfElements++;
-		h = h->next;
+		head = head->next;
 	}
 	return (numOfElements);
 }
