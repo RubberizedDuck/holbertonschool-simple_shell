@@ -110,7 +110,7 @@ void free_list(list_t *head)
 
 /**
  * list_len - returns number of elements in a linked struct
- * @h: pointer to first struct list
+ * @head: pointer to first struct list
  * Return: Number of elements created from struct list
  */
 
