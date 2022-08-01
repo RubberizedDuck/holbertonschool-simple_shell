@@ -20,6 +20,11 @@ char **tokens(char *string)
 	}
 	/* First token, delimiter set */
 	token = strtok(string, " ");
+	if (token == NULL)
+	{
+		free(toks);
+		return (NULL);
+	}
 	/* Printing tokens until exhausted */
 	while (token != NULL)
 	{
@@ -70,6 +75,10 @@ int _getline(void)
 		}
 		line[_strlen(line) - 1] = '\0';
 		args = tokens(line);
+		if (args == NULL)
+		{
+			continue;
+		}
 		fork_exec(args);
 		count = 0;
 		while (args[count] != NULL)

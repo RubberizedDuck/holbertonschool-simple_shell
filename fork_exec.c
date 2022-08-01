@@ -9,20 +9,20 @@
 void fork_exec(char **argv)
 {
 	pid_t child_pid;
+	extern char **environ;
 
 	child_pid = fork();
 	if (child_pid == 0)
 	{
 		if (execve(argv[0], argv, environ) == -1)
 		{
-			perror("error");
-			exit(EXIT_FAILURE);
+			perror("error: 1");
 		}
+		exit(EXIT_FAILURE);
 	}
 	else if (child_pid < 0)
 	{
-		perror("error");
-		exit(EXIT_FAILURE);
+		perror("error: 2");
 	}
 	else
 	{
