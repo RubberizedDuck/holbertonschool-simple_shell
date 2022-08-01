@@ -3,6 +3,7 @@
 
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra -pedantic -std=gnu89
+BETTY=betty
 
 TARGET=hsh
 SRC=	simple_shell.c \
@@ -13,3 +14,6 @@ SRC=	simple_shell.c \
 
 all:
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+
+betty:
+	$(BETTY) $(SRC)
