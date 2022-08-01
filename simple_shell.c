@@ -27,6 +27,7 @@ char **tokens(char *string)
 		token = strtok(NULL, " ");
 		count = count + 1;
 	}
+	toks[count] = NULL;
 	return (toks);
 }
 
