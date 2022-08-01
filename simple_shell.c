@@ -9,30 +9,41 @@
 
 char **tokens(char *string)
 {
+	list_t *node, *head = NULL;
 	char **toks;
 	char *token;
-	int count = 0;
+	int listlength, count = 0;
 
-	toks = malloc(sizeof(*toks) * 32);
-	if (toks == NULL)
-	{
-		return (NULL);
-	}
 	/* First token, delimiter set */
 	token = strtok(string, " ");
 	if (token == NULL)
 	{
-		free(toks);
+		free(token);
 		return (NULL);
 	}
+	add_node(&head, token);
 	/* Printing tokens until exhausted */
 	while (token != NULL)
 	{
-		toks[count] = _strdup(token);
 		token = strtok(NULL, " ");
-		count = count + 1;
+		if (token != NULL)
+			add_node_end(&head, token);
 	}
+	listlength = list_len(head);
+	toks = malloc(sizeof(*toks) * (listlength + 1));
+	if (toks == NULL)
+		return (NULL);
+
+	node = head;
+	while (count < listlength)
+	{
+		toks[count] = _strdup(node->str);
+		count++;
+		node = node->next;
+	}
+	free(token);
 	toks[count] = NULL;
+	free_list(head);
 	return (toks);
 }
 
