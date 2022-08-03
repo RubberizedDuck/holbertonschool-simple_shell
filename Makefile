@@ -2,8 +2,10 @@
 # gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra -pedantic -std=gnu89
+CFLAGS=-Wall -Werror -Wextra -pedantic -std=gnu89 -g
 BETTY=betty
+VALGRIND=valgrind
+VFLAGS= --leak-check=full --show-leak-kinds=all ./hsh
 
 TARGET=hsh
 SRC=	simple_shell.c \
@@ -17,3 +19,6 @@ all:
 
 betty:
 	$(BETTY) $(SRC)
+
+val:
+	$(VALGRIND) $(VFLAGS)
