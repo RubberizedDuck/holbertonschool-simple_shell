@@ -39,7 +39,7 @@ void free_list(list_t *head);
 size_t list_len(const list_t *head);
 /* (insert name of funcs) */
 char *_getenv(const char *name);
-void print_env(char *env_name);
+int print_env(void);
 int _env(void);
 void fork_exec(char **argv);
 
