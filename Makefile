@@ -12,6 +12,9 @@ SRC=	simple_shell.c \
 	string_funcs.c \
 	linklist_funcs.c \
 	fork_exec.c \
+	_getpath.c \
+	_stat.c \
+	assess_input.c \
 	_getenv.c
 
 all:
