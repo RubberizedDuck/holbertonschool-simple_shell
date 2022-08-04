@@ -12,6 +12,8 @@ SRC=	simple_shell.c \
 	fork_exec.c \
 	_getenv.c
 
+SRC2=	*.c
+
 all:
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
