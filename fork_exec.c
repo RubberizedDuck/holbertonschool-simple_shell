@@ -5,7 +5,7 @@
  * whilst the parent process waits
  * @args: user input
  * @newpath: the newly constructed path to send to execve
- * @envp: the environment used in execve
+ * @envp: the environmental array
  * Return: 0, always
  */
 void fork_exec(char *args[], char *newpath, char * const envp[])
