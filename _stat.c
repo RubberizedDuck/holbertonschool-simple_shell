@@ -33,10 +33,6 @@ char *_stat(char *args[], char *dirs[])
 			{
 				return (newpath);
 			}
-			else
-			{
-				free(newpath);
-			}
 		}
 		free(newpath);
 		i = i + 1;

@@ -47,7 +47,7 @@ void free_list(list_t *head);
 size_t list_len(const list_t *head);
 /* (insert name of funcs) */
 char *_getenv(char * const envp[], const char *name);
-void print_env(char *env_name);
+int print_env(char *env_name);
 int _env(void);
 int _builtin(char *argv[]);
 int exec_exit(void);

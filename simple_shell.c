@@ -34,6 +34,7 @@ char **tokens(char *string)
 		count = count + 1;
 	}
 	toks[count] = NULL;
+	free(token);
 	return (toks);
 }
 
@@ -62,11 +63,8 @@ int _getline(char * const envp[])
 		g = getline(&line, &len, stdin);
 		if (g == -1)
 		{
-			free(line);
 			if (g == EOF)
-				exit(0);
-			else
-				exit(1);
+				break;
 		}
 		line[_strlen(line) - 1] = '\0';
 		args = tokens(line);
@@ -84,7 +82,9 @@ int _getline(char * const envp[])
 			break;
 		}
 
-		assess_input(args, envp, dirs);
+		if (assess_input(args, envp, dirs) == -1)
+			printf("command not found\n");
+
 		while (args[count] != NULL)
 		{
 			free(args[count]);
