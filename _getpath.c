@@ -3,9 +3,9 @@
 /**
  * _getpath - builds a linked list of
  * folders in the PATH, adding nodes at the end
- * @name: Will be PATH for our purposes, but can be any
- * environment variable.
- * Return: 0 upon success
+ * @envp: the environmental array
+ * Return: a pointer to a pointer to a list of
+ * tokenised PATH directories, or NULL upon failure
  */
 
 char **_getpath(char * const envp[])
