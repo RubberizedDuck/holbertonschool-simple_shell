@@ -6,9 +6,8 @@
  * @envp: the environment in which to search, if required
   * Return: always 0
  */
-int assess_input(char *args[], char * const envp[])
+int assess_input(char *args[], char * const envp[], char **dirs)
 {
-	char **dirs;
 	char *newpath;
 
 	if (*args[0] == '/')
@@ -22,9 +21,9 @@ int assess_input(char *args[], char * const envp[])
 	}
 	else
 	{
-		dirs = _getpath(envp);
+
 		newpath = _stat(args, dirs);
 	}
-	fork_exec(args, newpath);
+	fork_exec(args, newpath, envp);
 	return (0);
 }
