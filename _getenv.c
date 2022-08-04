@@ -1,34 +1,13 @@
 #include "main.h"
 
 /**
-*_getenv - get the env members
-*@name: the member name
-*Return: pointer to member if found
-*
-char *_getenv(char * const envp[], const char *name)
-{
-	int i = 0, j = 0, flag;
-	char *current_env = NULL;
-
-	while (envp[i] != NULL)
-	{
-		flag = 0;
-		current_env = envp[i];
-
-		printf("%s\n", envp[i]);
-		while (current_env[j] != '=')
-		{
-			if (name[j] != current_env[j])
-				flag = 1;
-			j++;
-		}
-		if (flag == 0)
-			return (envp[i]);
-		i++;
-	}
-	return (NULL);
-}
-*/
+ * _getenv - isolate a particular section of the environment
+ * @envp: the environmental array
+ * @name: a string to compare with envp
+ * Return: pointer to the relevant section if found
+ * NULL otherwise
+ *
+ */
 
 char *_getenv(char * const envp[], const char *name)
 {
