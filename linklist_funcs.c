@@ -123,7 +123,7 @@ size_t list_len(const list_t *head)
 		if (head->str == NULL)
 			printf("(nil)\n");
 		else
-		numOfElements++;
+			numOfElements++;
 		head = head->next;
 	}
 	return (numOfElements);

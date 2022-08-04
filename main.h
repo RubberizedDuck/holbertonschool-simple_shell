@@ -26,6 +26,12 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 
+typedef struct builtin_s
+{
+	char *name;
+	int (*f)();
+} builtin_t;
+
 /* string functions */
 int _strncmp(const char *s1, const char *s2, int n);
 int _strlen(const char *s);
@@ -43,6 +49,9 @@ size_t list_len(const list_t *head);
 char *_getenv(char * const envp[], const char *name);
 void print_env(char *env_name);
 int _env(void);
+int _builtin(char *argv[]);
+int exec_exit(void);
+int exec_env(void);
 void fork_exec(char *args[], char *newpath, char * const envp[]);
 char **_getpath(char * const envp[]);
 char *_stat(char *args[], char *dirs[]);
