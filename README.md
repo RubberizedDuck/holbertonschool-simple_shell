@@ -1,7 +1,7 @@
 # :shell: C - Simple Shell
 A simple Unix shell created as part of the curriculum at [Holberton School](http://holbertonschool.com.au/) for Low-Level Programming.
 
-## :cinema: Usage 
+## Usage :cinema:
 To use the shell, simply compile all the ***.c*** files by using the ***make*** command and executing the ***hsh*** file that is created.
 
 ### Example
@@ -49,4 +49,3 @@ The shell reads the given input from the user and splits it into tokens if the i
 ## Authors :book:
 - Hamish Ross [**_[Gotmished](https://github.com/Gotmished)_**]
 - Dylan Anderson [**_[RubberizedDuck](https://github.com/RubberizedDuck)_**]
-## Created By Dylan Anderson & Hamish Ross
