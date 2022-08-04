@@ -9,51 +9,42 @@
 
 char **tokens(char *string)
 {
-	list_t *node, *head = NULL;
 	char **toks;
 	char *token;
-	int listlength, count = 0;
+	int count;
 
+	toks = malloc(sizeof(*toks) * 32);
+	if (toks == NULL)
+	{
+		return (NULL);
+	}
 	/* First token, delimiter set */
 	token = strtok(string, " ");
 	if (token == NULL)
 	{
-		free(token);
+		free(toks);
 		return (NULL);
 	}
-	add_node(&head, token);
 	/* Printing tokens until exhausted */
+	count = 0;
 	while (token != NULL)
 	{
+		toks[count] = _strdup(token);
 		token = strtok(NULL, " ");
-		if (token != NULL)
-			add_node_end(&head, token);
+		count = count + 1;
 	}
-	listlength = list_len(head);
-	toks = malloc(sizeof(*toks) * (listlength + 1));
-	if (toks == NULL)
-		return (NULL);
-
-	node = head;
-	while (count < listlength)
-	{
-		toks[count] = _strdup(node->str);
-		count++;
-		node = node->next;
-	}
-	free(token);
 	toks[count] = NULL;
-	free_list(head);
 	return (toks);
 }
 
 /**
  * _getline - prints the command line arguments passed through
  * the main function
+ * @envp: the current environment
  * Return: Always 0 (success)
  */
 
-int _getline(void)
+int _getline(char * const envp[])
 {
 	char **args;
 	/* define buffer and buffer size */
@@ -84,7 +75,7 @@ int _getline(void)
 		if (args == NULL)
 			continue;
 
-		fork_exec(args);
+		assess_input(args, envp);
 		count = 0;
 		while (args[count] != NULL)
 		{
@@ -104,7 +95,7 @@ int _getline(void)
  * Return: the result of the _getline function.
  */
 
-int main(__attribute__ ((unused)) int ac, __attribute__ ((unused)) char *av[])
+int main(__attribute__ ((unused)) int ac, __attribute__ ((unused)) char *av[], char * const envp[])
 {
-	return (_getline());
+	return (_getline(envp));
 }
