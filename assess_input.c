@@ -3,8 +3,9 @@
 /**
  * assess_input - determines what to do with user input
  * @args: user input to consider
- * @envp: the environment in which to search, if required
-  * Return: always 0
+ * @envp: the environmental array
+ * @dirs: a tokenised list of PATH directories
+ * Return: always 0
  */
 int assess_input(char *args[], char * const envp[], char **dirs)
 {
