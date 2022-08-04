@@ -48,12 +48,9 @@ int _getline(char * const envp[])
 {
 	char **args, **dirs;
 	/* define buffer and buffer size */
-	char *line;
-	size_t len;
-	int g, count;
-
-	line = NULL;
-	len = 32;
+	char *line = NULL;
+	size_t len = 32;
+	int g, count, i = 0;
 
 	dirs = _getpath(envp);
 	/* allows to loop forever */
@@ -85,6 +82,12 @@ int _getline(char * const envp[])
 		}
 		free(args);
 	}
+	while (dirs[i] != NULL)
+	{
+		free(dirs[i]);
+		i++;
+	}
+	free(dirs);
 	free(line);
 	return (0);
 }
@@ -96,7 +99,8 @@ int _getline(char * const envp[])
  * Return: the result of the _getline function.
  */
 
-int main(__attribute__ ((unused)) int ac, __attribute__ ((unused)) char *av[], char * const envp[])
+int main(__attribute__ ((unused)) int ac, __attribute__ ((unused)) char *av[],
+	 char * const envp[])
 {
 	return (_getline(envp));
 }
