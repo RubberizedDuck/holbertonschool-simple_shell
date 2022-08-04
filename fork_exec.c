@@ -24,6 +24,7 @@ void fork_exec(char *args[], char *newpath, char * const envp[])
 		{
 			perror("error 1 ");
 		}
+		free(newpath);
 		exit(EXIT_FAILURE);
 	}
 	else if (child_pid < 0)

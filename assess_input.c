@@ -26,5 +26,6 @@ int assess_input(char *args[], char * const envp[], char **dirs)
 		newpath = _stat(args, dirs);
 	}
 	fork_exec(args, newpath, envp);
+	free(newpath);
 	return (0);
 }
