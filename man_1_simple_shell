@@ -1,1 +1,49 @@
-Placeholder
+.\" Manpage for simple_shell
+.TH man 1 "4th August 2022" "1.0.0" "Simple Shell"
+
+.SH NAME
+.B hsh
+- a simple command line interpreter (UNIX)
+
+.SH SYNOPSIS
+.B hsh
+.I argument(s)
+
+.SH DESCRIPTION
+.B hsh
+is a simple command line interpreter that executes commands based upon user input in the terminal
+
+.SS Functionality
+The shell can used in either non-interactive or interactive mode. The former displays a
+.B $
+prompt to the user, denoting that it is able to accept typed input. The latter reads arguments, and executes applicable commands in the order that they are provided by the user.
+
+.SS Order of Operations
+User input is split into tokens, and the method of splitting is determined by the use of spaces (eg. a sentence will lead to a token for each word). These tokens are then assessed by the shell to ascertain whether they are recognisable commands. When a usable command is found, subsequent arguments of the user's initial input are treated as additional arguments or options to modify the initial command.
+
+Initially, these tokens are compared to a list of built-in commands, and if a match is found, the built-in commands is executed. The user is then returned to the prompt. If a match is not found, the tokens are checked to see if they match a particular command's path in the environment. Another failure to match leads the shell to check the tokens against all directories in the environment's PATH: a match here results in the appropriate path housing the desired command to be returned, and then the command is executed. Failure returns the user to the prompt with an error message.
+
+.SS Built-in Commands
+.TP
+.BR env
+- prints all environmental variables
+
+.TP
+.BR exit
+- exits the shell
+
+.SS Signals
+.br
+In interactive mode, Ctrl + C will terminate the shell by terminating the foreground process, and Ctrl + D will terminate the shell by registering an EOF in standard input.
+
+.SH EXIT STATUS
+Returns 0 upon exit.
+
+.SH KNOWN BUGS
+As of 04/08/22, many cases of allocated memory failing to be cleared, and appropriate errors and exit points yet to be completed
+
+.SH SEE ALSO
+sh
+
+.SH AUTHORS
+Dylan Anderson & Hamish Ross
