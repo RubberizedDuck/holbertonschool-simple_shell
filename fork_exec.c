@@ -8,7 +8,7 @@
  * @envp: the environment used in execve
  * Return: 0, always
  */
-void fork_exec(char *args[], char *newpath)
+void fork_exec(char *args[], char *newpath, char * const envp[])
 {
 	pid_t child_pid;
 
@@ -20,7 +20,7 @@ void fork_exec(char *args[], char *newpath)
 	child_pid = fork();
 	if (child_pid == 0)
 	{
-		if (execve(newpath, args, NULL) == -1)
+		if (execve(newpath, args, envp) == -1)
 		{
 			perror("error 1 ");
 		}
@@ -32,6 +32,6 @@ void fork_exec(char *args[], char *newpath)
 	}
 	else
 	{
-		wait(NULL);
+		wait(&child_pid);
 	}
 }

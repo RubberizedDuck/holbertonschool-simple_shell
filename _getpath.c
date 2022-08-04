@@ -17,7 +17,6 @@ char **_getpath(char * const envp[])
 
 	head = NULL;
 	str = _getenv(envp, "PATH");
-	printf("%s\n", str);
 	if (str == NULL)
 	{
 		return (NULL);

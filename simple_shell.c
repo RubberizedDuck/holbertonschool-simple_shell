@@ -46,7 +46,7 @@ char **tokens(char *string)
 
 int _getline(char * const envp[])
 {
-	char **args;
+	char **args, **dirs;
 	/* define buffer and buffer size */
 	char *line;
 	size_t len;
@@ -55,6 +55,7 @@ int _getline(char * const envp[])
 	line = NULL;
 	len = 32;
 
+	dirs = _getpath(envp);
 	/* allows to loop forever */
 	while (1)
 	{
@@ -75,7 +76,7 @@ int _getline(char * const envp[])
 		if (args == NULL)
 			continue;
 
-		assess_input(args, envp);
+		assess_input(args, envp, dirs);
 		count = 0;
 		while (args[count] != NULL)
 		{

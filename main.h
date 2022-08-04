@@ -43,9 +43,9 @@ size_t list_len(const list_t *head);
 char *_getenv(char * const envp[], const char *name);
 void print_env(char *env_name);
 int _env(void);
-void fork_exec(char *args[], char *newpath);
+void fork_exec(char *args[], char *newpath, char * const envp[]);
 char **_getpath(char * const envp[]);
 char *_stat(char *args[], char *dirs[]);
-int assess_input(char *args[], char * const envp[]);
+int assess_input(char *args[], char * const envp[], char **dirs);
 
 #endif /* _MAIN_H_ */
