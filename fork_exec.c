@@ -3,25 +3,32 @@
 /**
  * fork_exec - forks a child process to execute a command
  * whilst the parent process waits
- * @argv: an array of arguments containing the pathname
- * as well as any command arguments
+ * @args: user input
+ * @newpath: the newly constructed path to send to execve
+ * @envp: the environment used in execve
+ * Return: 0, always
  */
-void fork_exec(char **argv)
+void fork_exec(char *args[], char *newpath)
 {
 	pid_t child_pid;
+
+	if (newpath == NULL)
+	{
+		return;
+	}
 
 	child_pid = fork();
 	if (child_pid == 0)
 	{
-		if (execve(argv[0], argv, environ) == -1)
+		if (execve(newpath, args, NULL) == -1)
 		{
-			perror("error: 1");
+			perror("error 1 ");
 		}
 		exit(EXIT_FAILURE);
 	}
 	else if (child_pid < 0)
 	{
-		perror("error: 2");
+		perror("error 2 ");
 	}
 	else
 	{

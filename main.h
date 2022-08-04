@@ -6,11 +6,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <string.h>
-
-extern char **environ;
 
 /**
  * struct list_s - singly linked list
@@ -28,9 +27,12 @@ typedef struct list_s
 } list_t;
 
 /* string functions */
-int _strlen(char *s);
+int _strncmp(const char *s1, const char *s2, int n);
+int _strlen(const char *s);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
 /* linked list functions */
 list_t *add_node(list_t **head, const char *str);
 list_t *add_node_end(list_t **head, const char *str);
@@ -39,8 +41,12 @@ void free_list(list_t *head);
 size_t list_len(const list_t *head);
 /* (insert name of funcs) */
 char *_getenv(const char *name);
-int print_env(void);
+char *_getenv(char * const envp[], const char *name);
+void print_env(char *env_name);
 int _env(void);
-void fork_exec(char **argv);
+void fork_exec(char *args[], char *newpath);
+char **_getpath(char * const envp[]);
+char *_stat(char *args[], char *dirs[]);
+int assess_input(char *args[], char * const envp[]);
 
 #endif /* _MAIN_H_ */
