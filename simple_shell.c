@@ -85,20 +85,24 @@ int _getline(char * const envp[])
 			if (assess_input(args, envp, dirs) == -1)
 				printf("command not found\n");
 			count = 0;
-			while (args[count] != NULL)
+			if (args[count] != NULL)
+				free_tab(args);
+			/*while (args[count] != NULL)
 			{
 				free(args[count]);
 				count = count + 1;
 			}
-			free(args);
+			free(args);*/
 		}
 	}
-	while (dirs[i] != NULL)
+	if (dirs[i] != NULL)
+		free_tab(dirs);
+	/*while (dirs[i] != NULL)
 	{
 		free(dirs[i]);
 		i++;
 	}
-	free(dirs);
+	free(dirs);*/
 	free(line);
 	return (0);
 }
