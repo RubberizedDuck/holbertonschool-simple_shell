@@ -66,7 +66,7 @@ int _getline(char * const envp[])
 		args = tokens(line);
 		if (args == NULL)
 			continue;
-		if (_builtin(args) == -1)
+		if (_builtin(args) == -1 && !(assess_input(args, envp, dirs)))
 		{
 			if (args[count] != NULL)
 				free_tab(args);
