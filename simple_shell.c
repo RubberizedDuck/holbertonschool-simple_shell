@@ -73,12 +73,8 @@ int _getline(char * const envp[])
 
 		if (_builtin(args) == -1)
 		{
-			while (args[count] != NULL)
-			{
-				free(args[count]);
-				count++;
-			}
-			free(args);
+			if (args[count] != NULL)
+				free_tab(args);
 		}
 		else
 		{
