@@ -13,7 +13,7 @@ int assess_input(char *args[], char * const envp[], char **dirs)
 
 	if (*args[0] == '/')
 	{
-		newpath = args[0];
+		newpath = _strdup(args[0]);
 		if (access(args[0], F_OK | X_OK) == 1)
 		{
 			perror("error 3 ");
@@ -27,6 +27,6 @@ int assess_input(char *args[], char * const envp[], char **dirs)
 	if (newpath == NULL)
 		return (-1);
 	fork_exec(args, newpath, envp);
-/*	free(newpath);*/
+	free(newpath);
 	return (0);
 }

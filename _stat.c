@@ -37,5 +37,6 @@ char *_stat(char *args[], char *dirs[])
 		free(newpath);
 		i = i + 1;
 	}
+	free(newpath);
 	return (NULL);
 }

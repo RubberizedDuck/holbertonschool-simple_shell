@@ -35,4 +35,5 @@ void fork_exec(char *args[], char *newpath, char * const envp[])
 	{
 		wait(&child_pid);
 	}
+/*	free(newpath);*/
 }
