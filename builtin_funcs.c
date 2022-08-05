@@ -34,16 +34,29 @@ int _strcmp(char *s1, char *s2)
 	return (ret);
 }
 
+/**
+ * exec_env - prints environment
+ * Return: Always return 1
+ */
 int exec_env(void)
 {
 	return (1);
 }
 
+/**
+ * exec_exit - exit's the shell
+ * Return: Always return 1
+ */
 int exec_exit(void)
 {
 	return (-1);
 }
 
+/**
+ * _builtin - checks if command is a builtin
+ * @argv: command to check
+ * Return: Return bultin if found or 0 if not
+ */
 int _builtin(char *argv[])
 {
 	builtin_t builtins[] = {
