@@ -70,6 +70,7 @@ int _getline(char * const envp[])
 		{
 			if (args[count] != NULL)
 				free_tab(args);
+			break;
 		}
 		else
 		{
