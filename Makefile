@@ -29,7 +29,7 @@ all: 1 2
 	$(CC) $(CFLAGS) $(SRC2) -o $(TARGET)
 
 betty:
-	$(BETTY) $(SRC)
+	$(BETTY) $(SRC2)
 
 val:
 	$(VALGRIND) $(VFLAGS)
