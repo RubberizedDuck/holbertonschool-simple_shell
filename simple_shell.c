@@ -15,9 +15,7 @@ char **tokens(char *string)
 
 	toks = malloc(sizeof(*toks) * 32);
 	if (toks == NULL)
-	{
 		return (NULL);
-	}
 	/* First token, delimiter set */
 	token = strtok(string, " \t\r\n");
 	if (token == NULL)
@@ -48,13 +46,11 @@ char **tokens(char *string)
 int _getline(char * const envp[])
 {
 	char **args, **dirs;
-	/* define buffer and buffer size */
 	char *line = NULL;
 	size_t len = 32;
 	int g, count = 0, i = 0;
 
 	dirs = _getpath(envp);
-	/* allows to loop forever */
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -70,7 +66,6 @@ int _getline(char * const envp[])
 		args = tokens(line);
 		if (args == NULL)
 			continue;
-
 		if (_builtin(args) == -1)
 		{
 			if (args[count] != NULL)
@@ -95,6 +90,7 @@ int _getline(char * const envp[])
  * main - returns the result of the _getline function
  * @ac: UNUSED - the number of arguments passed
  * @av: UNUSED - the arguments to be printed as strings
+ * @envp: the environmental array
  * Return: the result of the _getline function.
  */
 
