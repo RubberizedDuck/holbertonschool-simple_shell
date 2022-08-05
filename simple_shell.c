@@ -19,7 +19,7 @@ char **tokens(char *string)
 		return (NULL);
 	}
 	/* First token, delimiter set */
-	token = strtok(string, " ");
+	token = strtok(string, " \t\r\n");
 	if (token == NULL)
 	{
 		free(toks);
@@ -30,7 +30,7 @@ char **tokens(char *string)
 	while (token != NULL)
 	{
 		toks[count] = _strdup(token);
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \t\r\n");
 		count = count + 1;
 	}
 	toks[count] = NULL;
