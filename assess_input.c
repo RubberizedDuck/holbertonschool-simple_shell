@@ -11,7 +11,7 @@ int assess_input(char *args[], char * const envp[], char **dirs)
 {
 	char *newpath;
 
-	if (*args[0] == '/')
+	if (*args[0] == '/' || *args[0] == '.')
 	{
 		newpath = _strdup(args[0]);
 		if (access(args[0], F_OK | X_OK) == 1)
