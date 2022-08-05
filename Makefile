@@ -15,10 +15,18 @@ SRC=	simple_shell.c \
 	_getpath.c \
 	_stat.c \
 	assess_input.c \
+	builtin_funcs.c \
 	_getenv.c
 
-all:
+SRC2=	*.c
+
+all: 1 2
+
+1:
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+
+2:
+	$(CC) $(CFLAGS) $(SRC2) -o $(TARGET)
 
 betty:
 	$(BETTY) $(SRC)
