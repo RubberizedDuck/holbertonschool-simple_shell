@@ -49,7 +49,6 @@ int exec_env(void)
  */
 int exec_exit(void)
 {
-	exit(2);
 	return (-1);
 }
 
