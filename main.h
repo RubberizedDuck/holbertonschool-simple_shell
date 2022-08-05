@@ -48,6 +48,7 @@ size_t list_len(const list_t *head);
 /* (insert name of funcs) */
 char *_getenv(char * const envp[], const char *name);
 int print_env(char *env_name);
+void free_tab(char **tab);
 int _env(void);
 int _builtin(char *argv[]);
 int exec_exit(void);
